@@ -1,6 +1,4 @@
-package Lesson_1.Marafon.Obstacles;
-
-import Lesson_1.Marafon.Animals.Competitor;
+package Lesson_1.Marafon;
 
 public abstract class Obstacle {
     public abstract void doIt(Competitor competitor);
