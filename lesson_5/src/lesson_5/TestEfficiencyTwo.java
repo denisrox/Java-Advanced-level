@@ -13,23 +13,21 @@ public class TestEfficiencyTwo {
             arr[i]=1;
         myThready.arr=arr;
     }
-    public void startRealization(int counter)
-    {
-        myThready.counter=counter;
-        long a;
-        if(counter==1)
+    public void startRealization(int amountThread) throws amountThreadException {
+        if(size%amountThread!=0) throw new amountThreadException();
+        myThready.counter=amountThread;
+        long timeWork=System.currentTimeMillis();
+        if(amountThread==1)
         {
-            a=System.currentTimeMillis();
             for(int i=0;i<arr.length;i++)
                 arr[i]=(float)(arr[i]*Math.sin(0.2f+i/5)*Math.cos(0.2f+i/5)*Math.cos(0.4f+i/2));
-            System.out.println(System.currentTimeMillis()-a);
         }
         else
         {
-            a=System.currentTimeMillis();
-            myThready[] threadTest=new myThready[counter];
-            for(int i = 0;i<counter;i++) {
-                threadTest[i]=new myThready(i*size/counter);
+            int sizeOfThread=size/amountThread;
+            myThready[] threadTest=new myThready[amountThread];
+            for(int i = 0;i<amountThread;i++) {
+                threadTest[i]=new myThready(i*sizeOfThread);
                 threadTest[i].start();
             }
 
@@ -40,9 +38,8 @@ public class TestEfficiencyTwo {
                     e.printStackTrace();
                 }
             }
-
-            System.out.println(System.currentTimeMillis()-a);
         }
+        System.out.println(System.currentTimeMillis()-timeWork);
     }
 }
 
