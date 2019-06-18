@@ -1,0 +1,29 @@
+#Toggle1{
+    -fx-border-color: #bccfa9;
+    -fx-background-color: transparent;
+    -fx-background-image: url("light.png");
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+#Toggle1:selected{
+    -fx-border-color: #bccfa9;
+    -fx-background-color: #635b5b;
+    -fx-background-image: url("night.png");
+    -fx-background-size: 30 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.root {
+    -track-color: white;
+    -border-color: #bccfa9;
+}
+.mode {
+    -fx-background-color: -track-color ;
+    -fx-border-color: -border-color;
+}
+.text-area .content{
+    -fx-background-color: -track-color;
+}
+
+
