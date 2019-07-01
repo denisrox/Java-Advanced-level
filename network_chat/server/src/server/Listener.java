@@ -49,16 +49,18 @@ public class Listener {
     }
     public void DeleteClientHandler(String nick){
         clients.remove(nick);
-        System.out.println(nick+" отключился");
+        System.out.println(nick+" отключился, онлайн осталось "+clients.size());
     }
     public void AddClientHandler(ClientHandler thisClient, String nick)
     {
         clients.put(nick,thisClient);
         System.out.println(nick+" авторизовался");
     }
-    public boolean sendMsgClientHadler(String nickOfRecipient,String msg,String nickOfSender)
+    public void sendMsgClientHadler(String nickOfRecipient,String msg,String nickOfSender)
     {
-        clients.get(nickOfRecipient).sendMsg("/w "+nickOfSender+":"+msg);
-        return true;
+        if(clients.get(nickOfRecipient)!=null)
+            clients.get(nickOfRecipient).sendMsg("/w "+nickOfSender+":"+msg);
+        else
+            clients.get(nickOfSender).sendMsg("Такого пользователя в чате в данный момент нет");
     }
 }

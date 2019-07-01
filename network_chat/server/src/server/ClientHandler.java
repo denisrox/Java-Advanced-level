@@ -103,8 +103,7 @@ public class ClientHandler {
                         out.writeUTF("/serverClosed");
                         return;
                     case "/w":
-                        if(!server.sendMsgClientHadler(tokens[1],tokens[2],nick))
-                            sendMsg("В данный момент пользователя с таким ником нет!");
+                        server.sendMsgClientHadler(tokens[1],tokens[2],nick);
                         break;
                     case "/blaclist":
                         break;

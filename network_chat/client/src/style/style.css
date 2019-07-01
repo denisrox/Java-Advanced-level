@@ -36,3 +36,24 @@ TextFlow{
     -fx-font-size: 16;
     -fx-font-family: "Arial";
 }
+.tab{
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+.tab:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+.radio-button .radio {
+    -fx-background-color: linear-gradient(RED, PINK)
+}
