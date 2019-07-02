@@ -1,0 +1,59 @@
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+.button:pressed{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 15, 0.0 , 0 , 1 );
+}
+.root{
+    -fx-background-color:linear-gradient(skyblue,wheat);
+}
+.menu-bar{
+    -fx-background-color:linear-gradient(wheat,skyblue);
+}
+.menu:hover{
+    -fx-background-color:linear-gradient(wheat,skyblue);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.text-field {
+    -fx-border-color: grey;
+    -fx-border-width: 0 0 1 0; // top, right, bottom, left
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-font-size: 16;
+    -fx-font-family: "Arial";
+-fx-background-color: transparent;
+}
+TextFlow{
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-font-size: 16;
+    -fx-font-family: "Arial";
+}
+.tab{
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+.tab:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+.radio-button .radio {
+    -fx-background-color: linear-gradient(RED, PINK)
+}
