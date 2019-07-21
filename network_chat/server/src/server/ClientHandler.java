@@ -66,31 +66,37 @@ public class ClientHandler {
     public void authorization() throws IOException {
         while (true) {
             String str = in.readUTF();
+            System.out.println(str);
             if (str.startsWith("/auth")) {
                 String[] tokens = str.split(" ");
                 String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
                 if (newNick != null) {
-                    sendMsg("/authok");
-                    nick = newNick;
-                    server.AddClientHandler(ClientHandler.this,nick);
-                    break;
+                    if(server.getClient(newNick))
+                    {
+                        sendMsg("/authok");
+                        nick = newNick;
+                        out.writeUTF(nick);
+                        server.AddClientHandler(ClientHandler.this,nick);
+                        break;
+                    }else
+                        sendMsg("/alreadyOnline");
+
                 } else {
-                    sendMsg("Неверный логин/пароль!");
+                    sendMsg("/noauth");
                 }
             }
             else if(str.startsWith("/reg"))
             {
+                System.out.println("as");
                 String[] tokens = str.split(" ");
-                String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
-                if (newNick != null) {
+                System.out.println(tokens);
+                if(AuthService.insertNewUser(tokens[1], tokens[2],tokens[3]))
                     sendMsg("/reg");
-                    nick = newNick;
-                    server.AddClientHandler(ClientHandler.this,nick);
-                    break;
-                } else {
-                    sendMsg("такой логин уже существует");
-                }
+                else
+                    sendMsg("/noreg");
             }
+            else if(str.startsWith("/end"))
+                sendMsg("/serverClosed");
         }
     }
     public void handlingClient() throws IOException {
@@ -106,6 +112,10 @@ public class ClientHandler {
                         server.sendMsgClientHadler(tokens[1],tokens[2],nick);
                         break;
                     case "/blaclist":
+                        if(AuthService.IgnoreAddOrDelete(nick,tokens[1]))
+                            sendMsg("Вы заблокировали "+tokens[1]);
+                        else
+                            sendMsg("Вы разблокировали "+tokens[1]);
                         break;
                     default:
                         out.writeUTF("/commandNotFound");
@@ -113,7 +123,7 @@ public class ClientHandler {
                 }
             }
             else{
-                server.broadCastMsg(str);
+                server.broadCastMsg(nick+": "+str);
             }
         }
     }
