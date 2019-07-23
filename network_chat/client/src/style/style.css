@@ -54,6 +54,16 @@ TextFlow{
     -fx-alignment: CENTER;
     -fx-text-fill: #96b946;
 }
-.radio-button .radio {
-    -fx-background-color: linear-gradient(RED, PINK)
+.hboxMyMsg {
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(242, 232, 53, 0.2);
+}
+.hboxNotMyMsg {
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(33, 242, 57, 0.2);
+}
+
+.label {
+    -fx-background-radius: 10;
+    -fx-background-color: linear-gradient(rgba(224, 215, 0, 0.4), #61a2b1);
 }
